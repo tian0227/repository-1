@@ -1,0 +1,11 @@
+{
+  "name":"Thailand Trip 2026",
+  "short_name":"Thailand Trip",
+  "start_url":"./index.html",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#f6f5f1",
+  "theme_color":"#173f3a",
+  "description":"Pattaya, Koh Larn and Bangkok trip plan for Aug 26–29, 2026",
+  "icons":[{"src":"trip-icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
