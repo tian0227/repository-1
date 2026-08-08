@@ -12,7 +12,7 @@
   <div class="badges"><span class="badge" id="hotelBadge"></span><span class="badge" id="rateBadge"></span><span class="badge" id="saveBadge"></span></div>
 </header>
 <nav class="nav">
-  <a href="day26.html" id="nav26"></a><a href="day27.html" id="nav27"></a><a href="day28.html" id="nav28"></a><a href="day29.html" id="nav29"></a><a href="summary.html" id="navSummary"></a>
+  <a href="index.html" id="navHome">⌂ 首页</a><a href="day26.html" id="nav26"></a><a href="day27.html" id="nav27"></a><a href="day28.html" id="nav28"></a><a href="day29.html" id="nav29"></a><a href="summary.html" id="navSummary"></a>
 </nav>
 <div id="homeView"${show('home')}></div>
 <section class="section" id="day26"${show('day26')}><div class="dayhead"><h2 id="day26Title"></h2><div class="daytheme" id="day26Theme"></div></div><div class="grid"><div class="card"><div class="timeline" id="timeline26"></div></div><div class="card"><h3 id="map26Title" style="margin:0 0 11px"></h3><div class="map" id="map26"></div><div class="mapnote" id="map26Note"></div></div></div></section>
