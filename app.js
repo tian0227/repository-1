@@ -1,7 +1,14 @@
 let lang=localStorage.getItem('tripLang')||'zh';
 let budgetCurrency=localStorage.getItem('tripBudgetCurrency')||'THB';
+let quickDay=localStorage.getItem('tripQuickDay')||'';
 const maps={};
 const txt=v=>typeof v==='string'?v:(v[lang]||v.zh||'');
+const quickI18n={
+  zh:{label:'快速定位',day:'选择日期',item:'选择时间段 / 行程'},
+  en:{label:'Quick jump',day:'Choose date',item:'Choose time / activity'},
+  ja:{label:'クイック移動',day:'日付を選択',item:'時間帯・予定を選択'},
+  th:{label:'ไปยังรายการ',day:'เลือกวันที่',item:'เลือกเวลา / กิจกรรม'}
+};
 function fmtEst(v){
   const s=txt(v);
   if(!s.includes('฿')||!s.includes('¥'))return s;
@@ -12,10 +19,57 @@ function fmtEst(v){
   const secondary=budgetCurrency==='JPY'?thb:jpy;
   return `${primary}<br><span style="font-size:10px;font-weight:700;color:#71807b">≈ ${secondary}</span>`;
 }
+function ensureQuickNav(){
+  if(document.getElementById('quickJump'))return;
+  const style=document.createElement('style');
+  style.textContent=`
+    .quickjump{display:flex;gap:7px;align-items:center;background:#fff;border:1px solid #dae8e4;border-radius:14px;padding:6px 8px;box-shadow:0 5px 13px rgba(32,50,45,.06);margin-left:auto}
+    .quicklabel{font-size:11px;font-weight:850;color:#0f766e;white-space:nowrap;padding:0 3px}
+    .quickselect{border:1px solid #d6e2df;background:#f8fbfa;color:#213936;border-radius:9px;padding:7px 28px 7px 9px;font-size:12px;font-weight:700;max-width:260px;min-height:34px}
+    .item{scroll-margin-top:145px}
+    .item.quickflash{background:#f0faf7;border-radius:13px;box-shadow:0 0 0 7px #f0faf7;transition:.25s}
+    @media(max-width:720px){.nav{background:rgba(244,241,234,.94);backdrop-filter:blur(8px);padding:6px;border-radius:14px}.quickjump{width:100%;margin-left:0;display:grid;grid-template-columns:auto 1fr 1.6fr}.quickselect{width:100%;max-width:none;min-width:0}.item{scroll-margin-top:175px}}
+    @media(max-width:470px){.quickjump{grid-template-columns:1fr 1.45fr}.quicklabel{grid-column:1/-1}.item{scroll-margin-top:210px}}
+  `;
+  document.head.appendChild(style);
+  const wrap=document.createElement('div');
+  wrap.className='quickjump';wrap.id='quickJump';
+  wrap.innerHTML='<span class="quicklabel" id="quickLabel"></span><select class="quickselect" id="quickDaySelect"></select><select class="quickselect" id="quickItemSelect" disabled></select>';
+  document.querySelector('.nav').appendChild(wrap);
+  quickDaySelect.onchange=()=>{
+    quickDay=quickDaySelect.value;
+    if(quickDay)localStorage.setItem('tripQuickDay',quickDay);else localStorage.removeItem('tripQuickDay');
+    fillQuickItems();
+    if(quickDay){const sec=document.getElementById('day'+quickDay);if(sec)sec.scrollIntoView({behavior:'smooth',block:'start'});}
+  };
+  quickItemSelect.onchange=()=>{
+    const id=quickItemSelect.value;if(!id)return;
+    const el=document.getElementById('trip_'+id);
+    if(el){el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.add('quickflash');setTimeout(()=>el.classList.remove('quickflash'),1800);}
+  };
+}
+function fillQuickItems(){
+  const q=quickI18n[lang]||quickI18n.zh;
+  const sel=document.getElementById('quickItemSelect');if(!sel)return;
+  sel.innerHTML=`<option value="">${q.item}</option>`;
+  if(!quickDay){sel.disabled=true;return;}
+  sel.disabled=false;
+  plans.filter(p=>String(p.day)===String(quickDay)).forEach(p=>{
+    const o=document.createElement('option');o.value=p.id;o.textContent=`${p.time} · ${txt(p.title)}`;sel.appendChild(o);
+  });
+}
+function renderQuickNav(){
+  ensureQuickNav();
+  const q=quickI18n[lang]||quickI18n.zh;
+  quickLabel.textContent=q.label;
+  quickDaySelect.innerHTML=`<option value="">${q.day}</option>`+[26,27,28,29].map(d=>`<option value="${d}">${ui[lang]['nav'+d]}</option>`).join('');
+  quickDaySelect.value=quickDay;
+  fillQuickItems();
+}
 function renderStatic(){const t=ui[lang];document.documentElement.lang=lang==='zh'?'zh-CN':lang;[['languageLabel','language'],['currencyLabel','currencyLabel'],['heroTitle','title'],['heroSubtitle','subtitle'],['hotelBadge','hotel'],['rateBadge','rate'],['saveBadge','save'],['nav26','nav26'],['nav27','nav27'],['nav28','nav28'],['nav29','nav29'],['navSummary','navSummary'],['day26Title','d26'],['day26Theme','d26theme'],['day27Title','d27'],['day27Theme','d27theme'],['day28Title','d28'],['day28Theme','d28theme'],['day29Title','d29'],['day29Theme','d29theme'],['summaryTitle','summary'],['resetBtn','reset'],['actualThbLabel','totalThb'],['actualJpyLabel','totalJpy'],['filledLabel','filled'],['footer','footer']].forEach(([id,k])=>document.getElementById(id).textContent=t[k]);[26,27,28,29].forEach(d=>{document.getElementById('map'+d+'Title').textContent=t.map;document.getElementById('map'+d+'Note').textContent=t['map'+d+'note']});document.querySelectorAll('.langbtn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));document.querySelectorAll('.currencybtn').forEach(b=>b.classList.toggle('active',b.dataset.currency===budgetCurrency))}
-function renderTimeline(day){const t=ui[lang],c=document.getElementById('timeline'+day);c.innerHTML='';plans.filter(p=>p.day===day).forEach(p=>{const saved=localStorage.getItem('actual_'+p.id)||'';const actual=p.actual===false?`<div class="moneybox"><div class="moneylabel">${t.actual}</div><div class="estimate">—</div></div>`:`<div class="moneybox"><div class="moneylabel">${t.actual}</div><div class="actualrow"><input inputmode="decimal" type="number" min="0" step="1" value="${saved}" placeholder="${t.actualPh}" data-actual="${p.id}"><span class="currency">THB</span></div><div class="jpycalc" id="jpy_${p.id}">${saved?`≈ ¥${Math.round(Number(saved)*RATE).toLocaleString()}`:''}</div></div>`;const el=document.createElement('div');el.className='item';el.innerHTML=`<div class="dot"></div><div class="time">${p.time}</div><div class="event"><strong>${txt(p.title)}</strong><div class="desc">${txt(p.desc)}</div><div class="projectbar"><a class="action mapaction" href="${p.map}" target="_blank" rel="noopener">${t.mapBtn}</a><a class="action webaction" href="${p.web}" target="_blank" rel="noopener">${t.webBtn}</a><div class="moneybox"><div class="moneylabel">${t.estimated}</div><div class="estimate">${fmtEst(p.est)}</div></div>${actual}</div></div>`;c.appendChild(el)});document.querySelectorAll('[data-actual]').forEach(inp=>inp.oninput=e=>{const id=e.target.dataset.actual,v=e.target.value;if(v==='')localStorage.removeItem('actual_'+id);else localStorage.setItem('actual_'+id,v);const calc=document.getElementById('jpy_'+id);if(calc)calc.textContent=v!==''?`≈ ¥${Math.round(Number(v)*RATE).toLocaleString()}`:'';updateSummary()})}
+function renderTimeline(day){const t=ui[lang],c=document.getElementById('timeline'+day);c.innerHTML='';plans.filter(p=>p.day===day).forEach(p=>{const saved=localStorage.getItem('actual_'+p.id)||'';const actual=p.actual===false?`<div class="moneybox"><div class="moneylabel">${t.actual}</div><div class="estimate">—</div></div>`:`<div class="moneybox"><div class="moneylabel">${t.actual}</div><div class="actualrow"><input inputmode="decimal" type="number" min="0" step="1" value="${saved}" placeholder="${t.actualPh}" data-actual="${p.id}"><span class="currency">THB</span></div><div class="jpycalc" id="jpy_${p.id}">${saved?`≈ ¥${Math.round(Number(saved)*RATE).toLocaleString()}`:''}</div></div>`;const el=document.createElement('div');el.className='item';el.id='trip_'+p.id;el.innerHTML=`<div class="dot"></div><div class="time">${p.time}</div><div class="event"><strong>${txt(p.title)}</strong><div class="desc">${txt(p.desc)}</div><div class="projectbar"><a class="action mapaction" href="${p.map}" target="_blank" rel="noopener">${t.mapBtn}</a><a class="action webaction" href="${p.web}" target="_blank" rel="noopener">${t.webBtn}</a><div class="moneybox"><div class="moneylabel">${t.estimated}</div><div class="estimate">${fmtEst(p.est)}</div></div>${actual}</div></div>`;c.appendChild(el)});document.querySelectorAll('[data-actual]').forEach(inp=>inp.oninput=e=>{const id=e.target.dataset.actual,v=e.target.value;if(v==='')localStorage.removeItem('actual_'+id);else localStorage.setItem('actual_'+id,v);const calc=document.getElementById('jpy_'+id);if(calc)calc.textContent=v!==''?`≈ ¥${Math.round(Number(v)*RATE).toLocaleString()}`:'';updateSummary()})}
 function updateSummary(){let total=0,filled=0,count=0;plans.forEach(p=>{if(p.actual===false)return;count++;const v=localStorage.getItem('actual_'+p.id);if(v!==null&&v!==''){total+=Number(v)||0;filled++}});actualThb.textContent='฿'+Math.round(total).toLocaleString();actualJpy.textContent='¥'+Math.round(total*RATE).toLocaleString();filledCount.textContent=filled+' / '+count}
 document.querySelectorAll('.langbtn').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;localStorage.setItem('tripLang',lang);renderAll()});document.querySelectorAll('.currencybtn').forEach(b=>b.onclick=()=>{budgetCurrency=b.dataset.currency;localStorage.setItem('tripBudgetCurrency',budgetCurrency);renderAll()});resetBtn.onclick=()=>{plans.forEach(p=>localStorage.removeItem('actual_'+p.id));renderAll()};
 function makeMap(id,pts,lines){const m=L.map(id,{scrollWheelZoom:false});L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(m);pts.forEach((p,i)=>L.marker([p[0],p[1]]).addTo(m).bindPopup(p[2]));lines.forEach(x=>L.polyline(x,{weight:4,opacity:.7,dashArray:'8 8'}).addTo(m));m.fitBounds(pts.map(p=>[p[0],p[1]]),{padding:[25,25]});return m}
-function renderAll(){renderStatic();[26,27,28,29].forEach(renderTimeline);updateSummary()}
+function renderAll(){renderStatic();[26,27,28,29].forEach(renderTimeline);renderQuickNav();updateSummary()}
 window.addEventListener('load',()=>{renderAll();maps.a=makeMap('map26',[[13.9126,100.6068,'DMK'],[12.9702,100.8864,'Garden Cliff'],[12.9685,100.8834,'Bamboo Beach'],[12.9695,100.9071,'New Naklua Market']],[[[13.9126,100.6068],[12.9702,100.8864],[12.9685,100.8834],[12.9695,100.9071]]]);maps.b=makeMap('map27',[[12.9702,100.8864,'Garden Cliff'],[12.9257,100.8676,'Bali Hai'],[12.9238,100.7838,'Tawaen'],[12.9097,100.7758,'Tien Beach'],[12.9231,100.7916,'Na Baan']],[[[12.9702,100.8864],[12.9257,100.8676],[12.9238,100.7838],[12.9097,100.7758],[12.9231,100.7916]]]);maps.c=makeMap('map28',[[12.9702,100.8864,'Garden Cliff'],[12.8645,100.9167,'Shooting Park'],[12.9129,100.9391,'Elephant Village'],[13.7368,100.5617,'Furama Asoke'],[13.7493,100.5282,'Jim Thompson House']],[[[12.9702,100.8864],[12.8645,100.9167],[12.9129,100.9391],[12.9702,100.8864]],[[12.9702,100.8864],[13.7368,100.5617],[13.7493,100.5282]]]);maps.d=makeMap('map29',[[13.7368,100.5617,'Furama Asoke'],[13.7437,100.4888,'Wat Arun'],[13.7465,100.493,'Wat Pho'],[13.9126,100.6068,'DMK']],[[[13.7368,100.5617],[13.7437,100.4888],[13.7465,100.493],[13.7368,100.5617],[13.9126,100.6068]]])});
