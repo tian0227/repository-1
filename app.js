@@ -9,6 +9,36 @@ const quickI18n={
   ja:{label:'クイック移動',day:'日付を選択',item:'時間帯・予定を選択'},
   th:{label:'ไปยังรายการ',day:'เลือกวันที่',item:'เลือกเวลา / กิจกรรม'}
 };
+const flightI18n={
+  zh:{
+    title:'航班信息',
+    me:'我的去程',mev:'8月26日 · FD237 · FUK 08:15 → DMK 11:45',
+    friend:'朋友去程',friendv:'8月26日 · NRT 09:15 → DMK 14:00',friendnote:'航空公司 / 航班号待确认',
+    back:'两人回程',backv:'8月29日 · FD236 · DMK 23:45 → FUK 07:05（8月30日）',
+    meet:'DMK汇合：朋友约14:00抵达后一起前往芭提雅'
+  },
+  en:{
+    title:'Flights',
+    me:'My outbound',mev:'Aug 26 · FD237 · FUK 08:15 → DMK 11:45',
+    friend:"Friend's outbound",friendv:'Aug 26 · NRT 09:15 → DMK 14:00',friendnote:'Airline / flight number to be confirmed',
+    back:'Return · both',backv:'Aug 29 · FD236 · DMK 23:45 → FUK 07:05 (Aug 30)',
+    meet:'Meet at DMK after the 14:00 arrival, then travel to Pattaya together'
+  },
+  ja:{
+    title:'フライト情報',
+    me:'自分の往路',mev:'8月26日 · FD237 · FUK 08:15 → DMK 11:45',
+    friend:'友人の往路',friendv:'8月26日 · NRT 09:15 → DMK 14:00',friendnote:'航空会社 / 便名は確認待ち',
+    back:'2人の復路',backv:'8月29日 · FD236 · DMK 23:45 → FUK 07:05（8月30日）',
+    meet:'DMKで合流：友人が14:00頃到着後、一緒にパタヤへ移動'
+  },
+  th:{
+    title:'ข้อมูลเที่ยวบิน',
+    me:'เที่ยวบินขาไปของฉัน',mev:'26 ส.ค. · FD237 · FUK 08:15 → DMK 11:45',
+    friend:'เที่ยวบินขาไปของเพื่อน',friendv:'26 ส.ค. · NRT 09:15 → DMK 14:00',friendnote:'รอยืนยันสายการบิน / หมายเลขเที่ยวบิน',
+    back:'เที่ยวบินขากลับของทั้งสองคน',backv:'29 ส.ค. · FD236 · DMK 23:45 → FUK 07:05 (30 ส.ค.)',
+    meet:'พบกันที่ DMK หลังเพื่อนถึงประมาณ 14:00 แล้วเดินทางไปพัทยาด้วยกัน'
+  }
+};
 function fmtEst(v){
   const s=txt(v);
   if(!s.includes('฿')||!s.includes('¥'))return s;
@@ -18,6 +48,37 @@ function fmtEst(v){
   const primary=budgetCurrency==='JPY'?jpy:thb;
   const secondary=budgetCurrency==='JPY'?thb:jpy;
   return `${primary}<br><span style="font-size:10px;font-weight:700;color:#71807b">≈ ${secondary}</span>`;
+}
+function ensureFlights(){
+  if(document.getElementById('flightSummary'))return;
+  const style=document.createElement('style');
+  style.textContent=`
+    .flightwrap{margin:16px 0 12px;background:#fff;border:1px solid #dce7e3;border-radius:20px;padding:17px 18px;box-shadow:0 8px 22px rgba(32,50,45,.06)}
+    .flighthead{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:11px}
+    .flighthead h3{margin:0;font-size:17px;color:#173b37}
+    .flightmeet{font-size:11px;color:#0f766e;font-weight:750;background:#edf8f5;border-radius:999px;padding:6px 9px}
+    .flightgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+    .flightcard{border:1px solid #e4ebe8;background:#fafcfb;border-radius:13px;padding:11px 12px}
+    .flightlabel{font-size:10.5px;color:#6b7874;font-weight:850;margin-bottom:5px}
+    .flightvalue{font-size:13px;color:#172624;font-weight:850;line-height:1.45}
+    .flightnote{font-size:10.5px;color:#8a6a37;margin-top:5px;line-height:1.35}
+    @media(max-width:760px){.flightgrid{grid-template-columns:1fr}.flighthead{align-items:flex-start;flex-direction:column}.flightmeet{border-radius:9px}}
+  `;
+  document.head.appendChild(style);
+  const sec=document.createElement('section');
+  sec.className='flightwrap';sec.id='flightSummary';
+  sec.innerHTML='<div class="flighthead"><h3 id="flightTitle"></h3><div class="flightmeet" id="flightMeet"></div></div><div class="flightgrid"><div class="flightcard"><div class="flightlabel" id="flightMeLabel"></div><div class="flightvalue" id="flightMeValue"></div></div><div class="flightcard"><div class="flightlabel" id="flightFriendLabel"></div><div class="flightvalue" id="flightFriendValue"></div><div class="flightnote" id="flightFriendNote"></div></div><div class="flightcard"><div class="flightlabel" id="flightBackLabel"></div><div class="flightvalue" id="flightBackValue"></div></div></div>';
+  const nav=document.querySelector('.nav');
+  nav.parentNode.insertBefore(sec,nav);
+}
+function renderFlights(){
+  ensureFlights();
+  const f=flightI18n[lang]||flightI18n.zh;
+  flightTitle.textContent=f.title;
+  flightMeet.textContent=f.meet;
+  flightMeLabel.textContent=f.me;flightMeValue.textContent=f.mev;
+  flightFriendLabel.textContent=f.friend;flightFriendValue.textContent=f.friendv;flightFriendNote.textContent=f.friendnote;
+  flightBackLabel.textContent=f.back;flightBackValue.textContent=f.backv;
 }
 function ensureQuickNav(){
   if(document.getElementById('quickJump'))return;
@@ -71,5 +132,5 @@ function renderTimeline(day){const t=ui[lang],c=document.getElementById('timelin
 function updateSummary(){let total=0,filled=0,count=0;plans.forEach(p=>{if(p.actual===false)return;count++;const v=localStorage.getItem('actual_'+p.id);if(v!==null&&v!==''){total+=Number(v)||0;filled++}});actualThb.textContent='฿'+Math.round(total).toLocaleString();actualJpy.textContent='¥'+Math.round(total*RATE).toLocaleString();filledCount.textContent=filled+' / '+count}
 document.querySelectorAll('.langbtn').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;localStorage.setItem('tripLang',lang);renderAll()});document.querySelectorAll('.currencybtn').forEach(b=>b.onclick=()=>{budgetCurrency=b.dataset.currency;localStorage.setItem('tripBudgetCurrency',budgetCurrency);renderAll()});resetBtn.onclick=()=>{plans.forEach(p=>localStorage.removeItem('actual_'+p.id));renderAll()};
 function makeMap(id,pts,lines){const m=L.map(id,{scrollWheelZoom:false});L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(m);pts.forEach((p,i)=>L.marker([p[0],p[1]]).addTo(m).bindPopup(p[2]));lines.forEach(x=>L.polyline(x,{weight:4,opacity:.7,dashArray:'8 8'}).addTo(m));m.fitBounds(pts.map(p=>[p[0],p[1]]),{padding:[25,25]});return m}
-function renderAll(){renderStatic();[26,27,28,29].forEach(renderTimeline);renderQuickNav();updateSummary()}
+function renderAll(){renderStatic();renderFlights();[26,27,28,29].forEach(renderTimeline);renderQuickNav();updateSummary()}
 window.addEventListener('load',()=>{renderAll();maps.a=makeMap('map26',[[13.9126,100.6068,'DMK'],[12.9702,100.8864,'Garden Cliff'],[12.9685,100.8834,'Bamboo Beach'],[12.9695,100.9071,'New Naklua Market']],[[[13.9126,100.6068],[12.9702,100.8864],[12.9685,100.8834],[12.9695,100.9071]]]);maps.b=makeMap('map27',[[12.9702,100.8864,'Garden Cliff'],[12.9257,100.8676,'Bali Hai'],[12.9238,100.7838,'Tawaen'],[12.9097,100.7758,'Tien Beach'],[12.9231,100.7916,'Na Baan']],[[[12.9702,100.8864],[12.9257,100.8676],[12.9238,100.7838],[12.9097,100.7758],[12.9231,100.7916]]]);maps.c=makeMap('map28',[[12.9702,100.8864,'Garden Cliff'],[12.8645,100.9167,'Shooting Park'],[12.9129,100.9391,'Elephant Village'],[13.7368,100.5617,'Furama Asoke'],[13.7493,100.5282,'Jim Thompson House']],[[[12.9702,100.8864],[12.8645,100.9167],[12.9129,100.9391],[12.9702,100.8864]],[[12.9702,100.8864],[13.7368,100.5617],[13.7493,100.5282]]]);maps.d=makeMap('map29',[[13.7368,100.5617,'Furama Asoke'],[13.7437,100.4888,'Wat Arun'],[13.7465,100.493,'Wat Pho'],[13.9126,100.6068,'DMK']],[[[13.7368,100.5617],[13.7437,100.4888],[13.7465,100.493],[13.7368,100.5617],[13.9126,100.6068]]])});
