@@ -1,7 +1,8 @@
 (function(){
   const view=window.TRIP_VIEW||'home';
-  const routes={navPrep:'prep.html',nav26:'day26.html',nav27:'day27.html',nav28:'day28.html',nav29:'day29.html',navSummary:'summary.html'};
-  const active={prep:'navPrep',day26:'nav26',day27:'nav27',day28:'nav28',day29:'nav29',summary:'navSummary'};
+  const routes={navHome:'index.html',navPrep:'prep.html',nav26:'day26.html',nav27:'day27.html',nav28:'day28.html',nav29:'day29.html',navSummary:'summary.html'};
+  const active={home:'navHome',prep:'navPrep',day26:'nav26',day27:'nav27',day28:'nav28',day29:'nav29',summary:'navSummary'};
+  const navHomeText={zh:'⌂ 首页',en:'⌂ Home',ja:'⌂ ホーム',th:'⌂ หน้าหลัก'};
   const homeText={
     zh:{title:'旅行目录',prep:['行程准备','入境要求、TDAC、行李清单与准备进度'],d26:['8月26日','航班 · DMK汇合 · 芭提雅入住 · 海鲜 · 水果'],d27:['8月27日','格兰岛 · 拖曳伞 · 游泳 · 夜钓鱿鱼'],d28:['8月28日','射击 · 骑象 · 前往曼谷 · Jim Thompson House'],d29:['8月29日','泰服 · 郑王庙 · 卧佛寺 · DMK返程'],sum:['金额统计','查看实际消费 THB / JPY 与填写进度']},
     en:{title:'Trip directory',prep:['Trip preparation','Entry rules, TDAC and packing checklist'],d26:['Aug 26','Flights · DMK meet-up · Pattaya · seafood · fruit'],d27:['Aug 27','Koh Larn · parasailing · swimming · squid fishing'],d28:['Aug 28','Shooting · elephant ride · Bangkok · Jim Thompson House'],d29:['Aug 29','Thai costume · Wat Arun · Wat Pho · DMK'],sum:['Expense summary','Actual spending in THB / JPY and entry progress']},
@@ -9,7 +10,14 @@
     th:{title:'เมนูทริป',prep:['เตรียมทริป','การเข้าเมือง TDAC และเช็กลิสต์กระเป๋า'],d26:['26 ส.ค.','เที่ยวบิน · พบกันที่ DMK · พัทยา · ซีฟู้ด · ผลไม้'],d27:['27 ส.ค.','เกาะล้าน · พาราเซลลิ่ง · ว่ายน้ำ · ตกหมึก'],d28:['28 ส.ค.','ยิงปืน · ขี่ช้าง · กรุงเทพฯ · Jim Thompson House'],d29:['29 ส.ค.','ชุดไทย · วัดอรุณ · วัดโพธิ์ · DMK'],sum:['สรุปค่าใช้จ่าย','ยอดจริง THB / JPY และความคืบหน้า']}
   };
   function setRoutes(){
+    const l=(typeof lang!=='undefined'?lang:'zh');
     Object.entries(routes).forEach(([id,href])=>{const a=document.getElementById(id);if(a)a.href=href});
+    const homeBtn=document.getElementById('navHome');
+    if(homeBtn){
+      homeBtn.textContent=navHomeText[l]||navHomeText.zh;
+      const nav=document.querySelector('.nav');
+      if(nav&&nav.firstElementChild!==homeBtn)nav.insertBefore(homeBtn,nav.firstElementChild);
+    }
     const brand=document.querySelector('.brand a');if(brand)brand.href='index.html';
     document.querySelectorAll('.nav>a').forEach(a=>a.classList.remove('nav-current'));
     const id=active[view];if(id){const a=document.getElementById(id);if(a)a.classList.add('nav-current')}
