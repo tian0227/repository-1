@@ -2,8 +2,8 @@
   const FIXED={flights:120000,pattaya:21000,bangkok:8707};
   const FIXED_IDS=new Set(['d26_f1','d26_f2','d26_4','28h0','29k']);
   const PER_PERSON_IDS=new Set(['27c','27d','27e','27h','28c','28e','28i','29d','29e','29f','29g']);
-  const TRANSPORT_IDS=new Set(['d26_3','d26_7','27b','27c','27f','28b','28d','28f','28g','28h','29c','29f','29i','29j']);
-  const FOOD_IDS=new Set(['d26_snack','d26_5','d26_6','27e','28j','29h']);
+  const TRANSPORT_IDS=new Set(['d26_3','d26_7','27b','27c','27f','28b','28d','28f','28g','28h','28j','28l','28n','29c','29f','29i','29j']);
+  const FOOD_IDS=new Set(['d26_snack','d26_5','d26_6','27e','28m','29h']);
 
   const T={
     zh:{title:'两人旅行预算',sub:'预计金额会直接读取当前行程并自动重新计算；机票与酒店使用已订实际金额。',booked:'已知固定支出',flights:'往返机票｜2人',pattaya:'Garden Cliff｜2晚 · 2人',bangkok:'FuramaXclusive Asoke｜1晚 · 2人',local:'泰国当地预计支出｜2人',transport:'交通',food:'餐饮与水果',activities:'活动与门票',total:'两人全程预计',typical:'当前中间预算',person:'平均每人约',note:'自动汇总当前行程中的预计金额。标有“+”的开放式价格，汇总上限暂按标示金额的1.5倍预留；不含额外购物和伴手礼。',flightNote:'往返机票 ¥60,000 / 人',pattayaNote:'酒店已订｜两晚 · 两人合计 ¥21,000',bangkokNote:'酒店已订｜一晚 · 两人合计 ¥8,707'},
