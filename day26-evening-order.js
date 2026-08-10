@@ -28,10 +28,10 @@
       th:'มื้อเย็นริมทะเล | เก็บ 4 ร้านไว้แล้วเลือกวันจริง'
     };
     dinner.desc={
-      zh:'四家全部保留，不提前锁死。选择规则：① The Glass House Silver｜优先推荐：顺利到酒店、时间充裕，想要第一晚更有海边度假氛围；② Moom Aroi Na Kluea｜海鲜优先：当天特别想认真吃一顿泰式海鲜；③ Bamboo Beach｜轻松省时：有点累，但还想在海边吃，方便控制用餐时间；④ Garden Cliff Chomtalay｜晚到备用：堵车、入住较晚或已经很累时直接在酒店吃，最大限度保留 Terminal 21 购物时间。目标19:10左右结束；若抵达明显延误，优先从 Bamboo Beach / Chomtalay 中选择。',
-      en:'Keep all four options and decide on the day. ① The Glass House Silver | top choice when arrival is smooth and you want a more atmospheric first-night seaside dinner; ② Moom Aroi Na Kluea | seafood-first choice for a proper Thai seafood meal; ③ Bamboo Beach | easy and time-efficient when tired but still wanting the beach; ④ Garden Cliff Chomtalay | late-arrival backup inside the hotel to preserve shopping time at Terminal 21. Aim to finish around 19:10; if arrival is delayed, favor Bamboo Beach or Chomtalay.',
-      ja:'4店すべて候補として残し、当日の状況で決定。① The Glass House Silver｜第一候補：到着が順調で、初日の海辺リゾート感を重視したい時；② Moom Aroi Na Kluea｜シーフード優先：タイ式シーフードをしっかり食べたい時；③ Bamboo Beach｜気軽・時短：少し疲れているが海辺で食べたい時；④ Garden Cliff Chomtalay｜遅着バックアップ：渋滞や遅いチェックイン、疲労時にホテル内で食べてTerminal 21の買い物時間を確保。19:10頃の終了を目標にし、遅れた場合はBamboo Beach / Chomtalayを優先。',
-      th:'เก็บทั้ง 4 ร้านไว้และเลือกตามสถานการณ์วันจริง ① The Glass House Silver | ตัวเลือกหลักเมื่อถึงโรงแรมตรงเวลาและอยากได้บรรยากาศริมทะเลคืนแรก ② Moom Aroi Na Kluea | เน้นซีฟู้ดไทยแบบจริงจัง ③ Bamboo Beach | สบายและประหยัดเวลาเมื่อเหนื่อยแต่ยังอยากกินริมทะเล ④ Garden Cliff Chomtalay | สำรองกรณีมาถึงช้า รถติด หรือเหนื่อย เพราะอยู่ในโรงแรมและช่วยเก็บเวลาไปช้อปที่ Terminal 21 เป้าหมายกินเสร็จราว 19:10 หากล่าช้ามากให้เลือก Bamboo Beach หรือ Chomtalay ก่อน'
+      zh:'四家全部保留。当前第一选择是 Bamboo Beach：离 Garden Cliff 很近，步行即可到海边，最省时间，也最方便晚饭后继续去 Terminal 21。若当天更想要精致的海边度假氛围，可选 The Glass House Silver；若重点想吃泰式海鲜，可选 Moom Aroi Na Kluea；若堵车、入住较晚或已经很累，则直接在酒店的 Chomtalay 吃。目标19:10左右结束。',
+      en:'Keep all four options. Bamboo Beach is now the first choice because it is very close to Garden Cliff, walkable, and the easiest option before continuing to Terminal 21. Choose The Glass House Silver when atmosphere matters most, Moom Aroi Na Kluea for a seafood-focused dinner, or Chomtalay inside the hotel if arrival is late or you are tired. Aim to finish around 19:10.',
+      ja:'4店すべて候補として残す。第一候補はBamboo Beach。Garden Cliffから近く徒歩で行けるため最も時短になり、夕食後にTerminal 21へ移動しやすい。雰囲気を重視するならThe Glass House Silver、タイ式シーフードをしっかり食べたいならMoom Aroi Na Kluea、到着が遅い・疲れている場合はホテル内のChomtalayを選ぶ。19:10頃の終了を目標。',
+      th:'เก็บทั้ง 4 ร้านไว้ โดย Bamboo Beach เป็นตัวเลือกแรก เพราะอยู่ใกล้ Garden Cliff เดินไปได้ ประหยัดเวลา และไป Terminal 21 ต่อได้สะดวก หากเน้นบรรยากาศริมทะเลให้เลือก The Glass House Silver หากอยากกินซีฟู้ดไทยจริงจังให้เลือก Moom Aroi Na Kluea และหากมาถึงช้าหรือเหนื่อยให้กินที่ Chomtalay ในโรงแรม เป้าหมายกินเสร็จราว 19:10'
     };
     dinner.est='฿500–2,200 / ¥2,400–10,560';
   }
