@@ -1,51 +1,14 @@
 (function(){
   const options=[
-    {
-      name:'Thai Glam Studio',
-      google:'https://www.google.com/maps/search/?api=1&query=Thai+Glam+Studio+Wat+Arun+Bangkok',
-      site:'https://ticket.thaiglamstudio.com/',
-      zh:'243 Thanon Wang Doem，靠近 Wat Arun。Standard 约 ฿587/人；Premium 约 ฿1,153/人；含妆发套餐价格更高。适合想看较多服装款式、需要妆发或可能临时加摄影。',
-      en:'243 Thanon Wang Doem near Wat Arun. Standard is about ฿587/person; Premium about ฿1,153/person; makeup/hair packages cost more. Good if you want a broad costume selection and may add styling or photography.',
-      ja:'Wat Arun近くの243 Thanon Wang Doem。Standard約฿587/人、Premium約฿1,153/人。メイク・ヘア付きはより高額。衣装の選択肢や妆髪、撮影追加を重視する場合に向く。',
-      th:'243 Thanon Wang Doem ใกล้ Wat Arun Standard ประมาณ ฿587/คน Premium ประมาณ ฿1,153/คน แพ็กเกจแต่งหน้า/ทำผมสูงกว่า เหมาะหากอยากมีชุดให้เลือกเยอะและอาจเพิ่มแต่งหน้าหรือช่างภาพ'
-    },
-    {
-      name:'Bestie Thai Costume',
-      google:'https://www.google.com/maps/search/?api=1&query=Bestie+Thai+Costume+Wat+Arun+Bangkok',
-      site:'https://bestiethaicostume.com/price-list/',
-      zh:'199 Wang Doem Road，Wat Arun出口对面。女装3小时：Standard ฿300、Premium ฿600、Deluxe ฿1,000、Exclusive ฿1,500；发型 ฿100、化妆 ฿300。价格透明，适合先控制预算再挑衣服。',
-      en:'199 Wang Doem Road, opposite the Wat Arun exit. Ladies’ 3-hour rental: Standard ฿300, Premium ฿600, Deluxe ฿1,000, Exclusive ฿1,500; hair ฿100, makeup ฿300. Transparent pricing and easy to compare on the day.',
-      ja:'Wat Arun出口向かいの199 Wang Doem Road。女性3時間：Standard ฿300、Premium ฿600、Deluxe ฿1,000、Exclusive ฿1,500。ヘア฿100、メイク฿300。料金が明確で予算を決めやすい。',
-      th:'199 Wang Doem Road ตรงข้ามทางออก Wat Arun เช่าชุดผู้หญิง 3 ชม.: Standard ฿300, Premium ฿600, Deluxe ฿1,000, Exclusive ฿1,500; ทำผม ฿100 แต่งหน้า ฿300 ราคาโปร่งใสและเทียบง่าย'
-    },
-    {
-      name:'Absolute Thai',
-      google:'https://www.google.com/maps/search/?api=1&query=Absolute+Thai+Thai+Costume+Rental+Wat+Arun+Bangkok',
-      site:'https://linktr.ee/absolutethai',
-      zh:'387 Thanon Wang Doem。服装、发型、妆容和摄影都可选，Google评价量较多。套餐和预订价格会随渠道/日期变化，到当天先看Google最新评论和店内报价再决定。',
-      en:'387 Thanon Wang Doem. Costume, hair, makeup and photography are available, with a large volume of Google reviews. Package prices vary by booking channel/date, so check current reviews and the shop quote on the day.',
-      ja:'387 Thanon Wang Doem。衣装・ヘア・メイク・撮影に対応し、Google口コミ数も多い。料金は予約経路や日付で変わるため、当日の口コミと店頭価格を確認して決定。',
-      th:'387 Thanon Wang Doem มีชุด ทำผม แต่งหน้า และถ่ายภาพ รีวิว Google ค่อนข้างเยอะ ราคาขึ้นอยู่กับช่องทางจองและวันที่ จึงควรดูรีวิวล่าสุดและราคาหน้าร้านวันจริง'
-    }
+    {name:'Thai Glam Studio',google:'https://www.google.com/maps/search/?api=1&query=Thai+Glam+Studio+Wat+Arun+Bangkok',site:'https://ticket.thaiglamstudio.com/',zh:'243 Thanon Wang Doem，靠近 Wat Arun。Standard 约 ฿587/人；Premium 约 ฿1,153/人；含妆发套餐价格更高。适合想看较多服装款式、需要妆发或可能临时加摄影。',en:'243 Thanon Wang Doem near Wat Arun. Standard is about ฿587/person; Premium about ฿1,153/person; makeup/hair packages cost more. Good if you want a broad costume selection and may add styling or photography.',ja:'Wat Arun近くの243 Thanon Wang Doem。Standard約฿587/人、Premium約฿1,153/人。メイク・ヘア付きはより高額。衣装の選択肢や妆髪、撮影追加を重視する場合に向く。',th:'243 Thanon Wang Doem ใกล้ Wat Arun Standard ประมาณ ฿587/คน Premium ประมาณ ฿1,153/คน แพ็กเกจแต่งหน้า/ทำผมสูงกว่า เหมาะหากอยากมีชุดให้เลือกเยอะและอาจเพิ่มแต่งหน้าหรือช่างภาพ'},
+    {name:'Bestie Thai Costume',google:'https://www.google.com/maps/search/?api=1&query=Bestie+Thai+Costume+Wat+Arun+Bangkok',site:'https://bestiethaicostume.com/price-list/',zh:'199 Wang Doem Road，Wat Arun出口对面。女装3小时：Standard ฿300、Premium ฿600、Deluxe ฿1,000、Exclusive ฿1,500；发型 ฿100、化妆 ฿300。价格透明，适合先控制预算再挑衣服。',en:'199 Wang Doem Road, opposite the Wat Arun exit. Ladies’ 3-hour rental: Standard ฿300, Premium ฿600, Deluxe ฿1,000, Exclusive ฿1,500; hair ฿100, makeup ฿300. Transparent pricing and easy to compare on the day.',ja:'Wat Arun出口向かいの199 Wang Doem Road。女性3時間：Standard ฿300、Premium ฿600、Deluxe ฿1,000、Exclusive ฿1,500。ヘア฿100、メイク฿300。料金が明確で予算を決めやすい。',th:'199 Wang Doem Road ตรงข้ามทางออก Wat Arun เช่าชุดผู้หญิง 3 ชม.: Standard ฿300, Premium ฿600, Deluxe ฿1,000, Exclusive ฿1,500; ทำผม ฿100 แต่งหน้า ฿300 ราคาโปร่งใสและเทียบง่าย'},
+    {name:'Absolute Thai',google:'https://www.google.com/maps/search/?api=1&query=Absolute+Thai+Thai+Costume+Rental+Wat+Arun+Bangkok',site:'https://linktr.ee/absolutethai',zh:'387 Thanon Wang Doem。服装、发型、妆容和摄影都可选，Google评价量较多。套餐和预订价格会随渠道/日期变化，到当天先看Google最新评论和店内报价再决定。',en:'387 Thanon Wang Doem. Costume, hair, makeup and photography are available, with a large volume of Google reviews. Package prices vary by booking channel/date, so check current reviews and the shop quote on the day.',ja:'387 Thanon Wang Doem。衣装・ヘア・メイク・撮影に対応し、Google口コミ数も多い。料金は予約経路や日付で変わるため、当日の口コミと店頭価格を確認して決定。',th:'387 Thanon Wang Doem มีชุด ทำผม แต่งหน้า และถ่ายภาพ รีวิว Google ค่อนข้างเยอะ ราคาขึ้นอยู่กับช่องทางจองและวันที่ จึงควรดูรีวิวล่าสุดและราคาหน้าร้านวันจริง'}
   ];
-  const labels={
-    zh:{google:'Google Maps · 评价/照片',site:'官网 / 价格 / 预订',note:'价格以当天页面或店内为准；专业摄影未计入当前行程预计总额。'},
-    en:{google:'Google Maps · reviews/photos',site:'Official / price / booking',note:'Check current shop/booking prices on the day. Professional photography is not included in the current itinerary estimate.'},
-    ja:{google:'Google Maps · 口コミ/写真',site:'公式 / 料金 / 予約',note:'料金は当日の公式/店頭表示を確認。プロ撮影は現在の旅程予算に含めていません。'},
-    th:{google:'Google Maps · รีวิว/รูป',site:'เว็บ / ราคา / จอง',note:'ให้เช็กราคาปัจจุบันจากร้านหรือหน้าจองวันจริง งบปัจจุบันยังไม่รวมช่างภาพมืออาชีพ'}
-  };
+  const labels={zh:{google:'Google Maps · 评价/照片',site:'官网 / 价格 / 预订',note:'价格以当天页面或店内为准；专业摄影未计入当前行程预计总额。'},en:{google:'Google Maps · reviews/photos',site:'Official / price / booking',note:'Check current shop/booking prices on the day. Professional photography is not included in the current itinerary estimate.'},ja:{google:'Google Maps · 口コミ/写真',site:'公式 / 料金 / 予約',note:'料金は当日の公式/店頭表示を確認。プロ撮影は現在の旅程予算に含めていません。'},th:{google:'Google Maps · รีวิว/รูป',site:'เว็บ / ราคา / จอง',note:'ให้เช็กราคาปัจจุบันจากร้านหรือหน้าจองวันจริง งบปัจจุบันยังไม่รวมช่างภาพมืออาชีพ'}};
   function curLang(){return localStorage.getItem('tripLang')||'zh'}
   function style(){if(document.getElementById('d29CostumeStyle'))return;const s=document.createElement('style');s.id='d29CostumeStyle';s.textContent='.d29-costume-options{margin-top:10px;display:grid;gap:8px}.d29-costume-card{border:1px solid #dfe8e5;border-radius:11px;background:#fafcfb;padding:9px 10px}.d29-costume-name{font-size:11.5px;font-weight:900;color:#203a36}.d29-costume-desc{font-size:10.5px;color:#5f706b;line-height:1.55;margin-top:4px}.d29-costume-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}.d29-costume-actions a{display:inline-block;text-decoration:none;border:1px solid #cbdcd7;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:800;color:#0f625a;background:#fff}.d29-costume-note{font-size:9.8px;color:#7b8783;line-height:1.45;padding:2px 2px 0}';document.head.appendChild(s)}
-  function patch(){
-    const event=document.querySelector('#trip_29d .event');if(!event)return;
-    style();
-    const old=document.getElementById('d29CostumeOptions');if(old)old.remove();
-    const l=curLang(),t=labels[l]||labels.zh;
-    const wrap=document.createElement('div');wrap.id='d29CostumeOptions';wrap.className='d29-costume-options';
-    options.forEach(o=>{const card=document.createElement('div');card.className='d29-costume-card';card.innerHTML=`<div class="d29-costume-name">${o.name}</div><div class="d29-costume-desc">${o[l]||o.zh}</div><div class="d29-costume-actions"><a href="${o.google}" target="_blank" rel="noopener">${t.google}</a><a href="${o.site}" target="_blank" rel="noopener">${t.site}</a></div>`;wrap.appendChild(card)});
-    const note=document.createElement('div');note.className='d29-costume-note';note.textContent=t.note;wrap.appendChild(note);
-    const desc=event.querySelector('.desc');if(desc)desc.after(wrap);else event.prepend(wrap);
-  }
-  window.addEventListener('load',()=>setTimeout(patch,900));
+  function patch(){const event=document.querySelector('#trip_29d .event');if(!event)return;style();const old=document.getElementById('d29CostumeOptions');if(old)old.remove();const l=curLang(),t=labels[l]||labels.zh;const wrap=document.createElement('div');wrap.id='d29CostumeOptions';wrap.className='d29-costume-options';options.forEach(o=>{const card=document.createElement('div');card.className='d29-costume-card';card.innerHTML=`<div class="d29-costume-name">${o.name}</div><div class="d29-costume-desc">${o[l]||o.zh}</div><div class="d29-costume-actions"><a href="${o.google}" target="_blank" rel="noopener">${t.google}</a><a href="${o.site}" target="_blank" rel="noopener">${t.site}</a></div>`;wrap.appendChild(card)});const note=document.createElement('div');note.className='d29-costume-note';note.textContent=t.note;wrap.appendChild(note);const desc=event.querySelector('.desc');if(desc)desc.after(wrap);else event.prepend(wrap);}
+  window.addEventListener('load',()=>setTimeout(patch,300));
+  document.addEventListener('trip:rendered',patch);
   document.addEventListener('click',e=>{if(e.target.closest('.langbtn,.currencybtn'))setTimeout(patch,160)});
 })();
