@@ -8,34 +8,29 @@
     jim.time='15:20–16:45';
     jim.title=T('Jim Thompson House','Jim Thompson House','Jim Thompson House','Jim Thompson House');
     jim.desc=T(
-      '参观主宅与庭院，16:45左右离开。不要拖到闭馆，给前往 Asiatique 和 SkyFlyers 落日时段留足余量。',
-      'Visit the house and garden, then leave around 16:45. Do not stay until closing; keep enough buffer for Asiatique and the SkyFlyers sunset window.',
-      '邸宅と庭園を見学し、16:45頃に出発。閉館まで滞在せず、Asiatiqueへの移動とSkyFlyersの夕暮れ時間に余裕を残す。',
-      'เที่ยวบ้านและสวน แล้วออกประมาณ 16:45 ไม่ควรอยู่จนปิด เพื่อเผื่อเวลาเดินทางไป Asiatique และช่วงพระอาทิตย์ตกของ SkyFlyers'
+      '参观主宅与庭院，16:45左右离开，给前往 Asiatique 和 SkyFlyers 落日时段留足余量。',
+      'Visit the house and garden, then leave around 16:45, keeping enough buffer for Asiatique and the SkyFlyers sunset window.',
+      '邸宅と庭園を見学し、16:45頃に出発。Asiatiqueへの移動とSkyFlyersの夕暮れ時間に余裕を残す。',
+      'เที่ยวบ้านและสวน แล้วออกประมาณ 16:45 เพื่อเผื่อเวลาเดินทางไป Asiatique และช่วงพระอาทิตย์ตกของ SkyFlyers'
     );
   }
 
   const transfer=p('28j');
   if(transfer){
     transfer.time='16:45–17:50';
-    transfer.title=T(
-      'Jim Thompson → Asiatique The Riverfront',
-      'Jim Thompson → Asiatique The Riverfront',
-      'Jim Thompson → Asiatique The Riverfront',
-      'Jim Thompson → Asiatique The Riverfront'
-    );
+    transfer.title=T('Jim Thompson → Asiatique The Riverfront','Jim Thompson → Asiatique The Riverfront','Jim Thompson → Asiatique The Riverfront','Jim Thompson → Asiatique The Riverfront');
     transfer.desc=T(
-      '推荐公共交通：从 Jim Thompson 步行到 BTS National Stadium，经 Siam 换乘 Silom Line 到 Saphan Taksin，2号口前往 Sathorn Pier，再搭 Asiatique 免费接驳船。若等车/等船时间过长，直接 Grab/Bolt 去 Asiatique，优先保证 SkyFlyers 落日时间。',
-      'Recommended route: walk to BTS National Stadium, change at Siam to the Silom Line for Saphan Taksin, use Exit 2 for Sathorn Pier, then take the free Asiatique shuttle boat. If rail/boat waiting becomes too long, use Grab/Bolt directly and protect the SkyFlyers sunset timing.',
-      'おすすめは公共交通。Jim ThompsonからBTS National Stadiumへ歩き、SiamでSilom Lineに乗換えてSaphan Taksinへ。2番出口からSathorn Pierへ行き、Asiatiqueの無料シャトル船を利用。待ち時間が長ければGrab/Boltへ切り替え、SkyFlyersの夕暮れ時間を優先。',
-      'แนะนำขนส่งสาธารณะ: เดินจาก Jim Thompson ไป BTS National Stadium เปลี่ยนสายที่ Siam ไป Silom Line ลง Saphan Taksin ออกทางออก 2 ไป Sathorn Pier แล้วขึ้นเรือรับส่งฟรีของ Asiatique หากรอรถหรือเรือนาน ให้ใช้ Grab/Bolt ตรงไปเพื่อรักษาเวลาพระอาทิตย์ตกของ SkyFlyers'
+      '推荐公共交通：步行到 BTS National Stadium，经 Siam 换乘 Silom Line 到 Saphan Taksin，2号口前往 Sathorn Pier，再搭 Asiatique 接驳船。若等车或等船时间过长，直接 Grab/Bolt 去 Asiatique，优先保证 SkyFlyers 落日时间。',
+      'Recommended route: walk to BTS National Stadium, change at Siam to the Silom Line for Saphan Taksin, use Exit 2 for Sathorn Pier, then take the Asiatique shuttle boat. If waiting becomes too long, use Grab/Bolt directly and protect the SkyFlyers sunset timing.',
+      'BTS National Stadiumまで歩き、SiamでSilom Lineへ乗換え、Saphan Taksinへ。2番出口からSathorn Pierへ行き、Asiatiqueのシャトル船を利用。待ち時間が長ければGrab/Boltに切り替え、SkyFlyersの夕暮れ時間を優先。',
+      'เดินไป BTS National Stadium เปลี่ยนสายที่ Siam ไป Silom Line ลง Saphan Taksin ออกทางออก 2 ไป Sathorn Pier แล้วขึ้นเรือไป Asiatique หากรอนานให้ใช้ Grab/Bolt ตรงไปเพื่อรักษาเวลาพระอาทิตย์ตกของ SkyFlyers'
     );
     transfer.map='https://www.google.com/maps/dir/?api=1&origin=Jim+Thompson+House+Museum+Bangkok&destination=Asiatique+The+Riverfront+Bangkok&travelmode=transit';
     transfer.web='https://www.thailandtravel.or.jp/asiatique-the-riverfront/';
     transfer.est='฿100–250 / ¥480–1,200';
   }
 
-  ['28k','28l','28m','28n'].forEach(id=>{
+  ['28k','28l','28m','28n','28o'].forEach(id=>{
     const i=plans28.findIndex(x=>x.id===id);
     if(i>=0)plans28.splice(i,1);
   });
@@ -51,25 +46,28 @@
       ),
       map:'https://www.google.com/maps/search/?api=1&query=SkyFlyers+Wings+of+Garudapterus+Asiatique+Bangkok',
       web:'https://www.thailandtravel.or.jp/skyflyers/',est:'฿640 / ¥3,070'},
-    {id:'28l',day:28,time:'18:45–21:15',
-      title:T('Asiatique｜河边晚餐 + 夜景 + 随意逛','Asiatique | riverside dinner + night views','Asiatique｜川沿いディナー + 夜景','Asiatique | อาหารเย็นริมแม่น้ำ + วิวกลางคืน'),
+
+    {id:'28l',day:28,time:'18:45–22:30',
+      title:T('PLAN A｜JODD FAIRS Ratchada（主计划）','PLAN A | JODD FAIRS Ratchada (main plan)','PLAN A｜JODD FAIRS Ratchada（主プラン）','PLAN A | JODD FAIRS Ratchada (แผนหลัก)'),
       desc:T(
-        '坐完 SkyFlyers 后不再赶下一站，就留在 Asiatique。找一家河边或园区内的泰餐/海鲜餐厅吃晚饭，之后沿湄南河散步、拍夜景，看到喜欢的小店再逛。节奏放松，不安排必须打卡的第二个夜市。',
-        'After SkyFlyers, stay at Asiatique rather than rushing elsewhere. Have Thai food or seafood at a riverside or on-site restaurant, then walk along the Chao Phraya, take night photos and browse only shops that look interesting. No second night market is required.',
-        'SkyFlyers後は次の場所へ急がずAsiatiqueに滞在。川沿いまたは園内でタイ料理・シーフードの夕食を取り、チャオプラヤ川沿いを散歩して夜景を撮影。気になる店だけ見て、別の夜市は入れない。',
-        'หลัง SkyFlyers อยู่ต่อที่ Asiatique ไม่ต้องรีบไปที่อื่น กินอาหารไทยหรือซีฟู้ดที่ร้านริมแม่น้ำหรือในโครงการ แล้วเดินริมเจ้าพระยา ถ่ายรูปกลางคืน และแวะร้านที่สนใจ ไม่ต้องใส่ตลาดกลางคืนแห่งที่สอง'
+        'SkyFlyers 后先在 Asiatique 河边拍照、简单逛到约19:15；随后 Grab/Bolt 前往 JODD FAIRS Ratchada，目标20:00左右到。20:00–22:00在夜市吃晚饭、小吃和水果，再回 FuramaXclusive Asoke。若 SkyFlyers 排队较久，就缩短 Asiatique 散步时间，优先保留 JODD FAIRS。',
+        'After SkyFlyers, spend a short time by the river at Asiatique until about 19:15, then take Grab/Bolt to JODD FAIRS Ratchada and aim to arrive around 20:00. Eat dinner, snacks and fruit there from about 20:00–22:00, then return to FuramaXclusive Asoke. If SkyFlyers runs late, shorten the Asiatique stroll and keep JODD FAIRS.',
+        'SkyFlyers後はAsiatiqueの川沿いで19:15頃まで写真・軽い散策。その後Grab/BoltでJODD FAIRS Ratchadaへ向かい、20:00頃到着を目標。20:00〜22:00は夜市で夕食・軽食・フルーツを楽しみ、FuramaXclusive Asokeへ戻る。SkyFlyersが遅れた場合はAsiatique散策を短縮し、JODD FAIRSを優先。',
+        'หลัง SkyFlyers เดินเล่นและถ่ายรูปริมแม่น้ำที่ Asiatique ถึงประมาณ 19:15 แล้วใช้ Grab/Bolt ไป JODD FAIRS Ratchada ตั้งเป้าถึงราว 20:00 กินมื้อเย็น ของว่าง และผลไม้ถึงประมาณ 22:00 แล้วกลับ FuramaXclusive Asoke หาก SkyFlyers ล่าช้า ให้ลดเวลาเดินที่ Asiatique และเก็บ JODD FAIRS ไว้'
       ),
-      map:'https://www.google.com/maps/search/?api=1&query=Asiatique+The+Riverfront+Bangkok',
-      web:'https://www.thailandtravel.or.jp/asiatique-the-riverfront/',est:'฿800–1,800 / ¥3,840–8,640'},
-    {id:'28m',day:28,time:'21:15–22:00',
-      title:T('Asiatique → FuramaXclusive Asoke','Asiatique → FuramaXclusive Asoke','Asiatique → FuramaXclusive Asoke','Asiatique → FuramaXclusive Asoke'),
+      map:'https://www.google.com/maps/dir/?api=1&origin=Asiatique+The+Riverfront+Bangkok&destination=JODD+FAIRS+Ratchada+Bangkok&travelmode=driving',
+      web:'https://www.thailandtravel.or.jp/jodd-fairs/',est:'฿800–1,800 / ¥3,840–8,640'},
+
+    {id:'28m',day:28,time:'18:45–21:45',optional:true,actual:false,
+      title:T('PLAN B｜留在 Asiatique（轻松备选）','PLAN B | Stay at Asiatique (easy backup)','PLAN B｜Asiatiqueに滞在（ゆったり案）','PLAN B | อยู่ต่อที่ Asiatique (แผนสบาย)'),
       desc:T(
-        '晚上直接回酒店休息。体力好且接驳船/BTS顺的话可原路公共交通返回；更省事就直接 Grab/Bolt 回 FuramaXclusive Asoke。',
-        'Return to the hotel for the night. If you still have energy and the boat/BTS connection is smooth, use public transit; otherwise take Grab/Bolt directly to FuramaXclusive Asoke.',
-        '夜はそのままホテルへ。体力があり船/BTSの接続が良ければ公共交通、楽に戻りたい場合はGrab/BoltでFuramaXclusive Asokeへ直行。',
-        'กลับโรงแรมช่วงค่ำ หากยังมีแรงและเรือ/BTS ต่อสะดวกก็ใช้ขนส่งสาธารณะ หรือเรียก Grab/Bolt ตรงกลับ FuramaXclusive Asoke เพื่อความสะดวก'
+        '如果当天太累、下雨、堵车严重，或 SkyFlyers 排队明显超时，就不再赶 JODD FAIRS。直接留在 Asiatique 吃泰餐/海鲜、看湄南河夜景、逛园区，约21:15左右离开并返回 FuramaXclusive Asoke。这个方案是备选，不与 Plan A 同时执行。',
+        'If you are tired, it rains, traffic is severe, or the SkyFlyers queue runs very late, skip JODD FAIRS. Stay at Asiatique for Thai food or seafood, river views and browsing, then leave around 21:15 for FuramaXclusive Asoke. This is an alternative to Plan A, not an additional stop.',
+        '疲れ・雨・ひどい渋滞・SkyFlyersの大幅な待ち時間がある場合はJODD FAIRSへ行かず、Asiatiqueでタイ料理/シーフード、川沿いの夜景、散策を楽しむ。21:15頃に出発してFuramaXclusive Asokeへ戻る。Plan Aとの二者択一。',
+        'หากเหนื่อย ฝนตก รถติดหนัก หรือคิว SkyFlyers ล่าช้ามาก ให้ข้าม JODD FAIRS และอยู่ที่ Asiatique กินอาหารไทย/ซีฟู้ด ชมวิวแม่น้ำ และเดินเล่น แล้วออกประมาณ 21:15 กลับ FuramaXclusive Asoke เป็นตัวเลือกแทน Plan A ไม่ทำทั้งสองแผนพร้อมกัน'
       ),
       map:'https://www.google.com/maps/dir/?api=1&origin=Asiatique+The+Riverfront+Bangkok&destination=FuramaXclusive+Asoke+Bangkok&travelmode=driving',
-      web:'https://www.furama.com/furamaxclusive/asoke/',est:'฿150–300 / ¥720–1,440'}
+      web:'https://www.thailandtravel.or.jp/asiatique-the-riverfront/',
+      est:T('备选｜不计入主预算','Backup | not counted in main budget','予備案｜主予算に含めない','แผนสำรอง | ไม่รวมในงบหลัก')}
   );
 })();
