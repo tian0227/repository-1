@@ -1,40 +1,75 @@
 (function(){
   if(typeof plans28==='undefined')return;
+  const T=(zh,en,ja,th)=>({zh,en,ja,th});
   const p=id=>plans28.find(x=>x.id===id);
 
   const jim=p('28i');
-  if(jim) jim.time='15:20–16:40';
+  if(jim){
+    jim.time='15:20–16:45';
+    jim.title=T('Jim Thompson House','Jim Thompson House','Jim Thompson House','Jim Thompson House');
+    jim.desc=T(
+      '参观主宅与庭院，16:45左右离开。不要拖到闭馆，给前往 Asiatique 和 SkyFlyers 落日时段留足余量。',
+      'Visit the house and garden, then leave around 16:45. Do not stay until closing; keep enough buffer for Asiatique and the SkyFlyers sunset window.',
+      '邸宅と庭園を見学し、16:45頃に出発。閉館まで滞在せず、Asiatiqueへの移動とSkyFlyersの夕暮れ時間に余裕を残す。',
+      'เที่ยวบ้านและสวน แล้วออกประมาณ 16:45 ไม่ควรอยู่จนปิด เพื่อเผื่อเวลาเดินทางไป Asiatique และช่วงพระอาทิตย์ตกของ SkyFlyers'
+    );
+  }
 
   const transfer=p('28j');
   if(transfer){
-    transfer.time='16:40–17:15/17:30';
-    transfer.title={zh:'Jim Thompson → 落日飞车集合点',en:'Jim Thompson → sunset ride meeting point',ja:'Jim Thompson → サンセットライド集合場所',th:'Jim Thompson → จุดนัดพบ Sunset Ride'};
-    transfer.desc={zh:'参观结束后直接前往集合点。当前短版候选是 Bangkok Funride Night Tour，集合地址在 130 Samsen 2 Alley；具体开场时间以最终预订为准，建议至少提前15分钟到。',en:'Go straight to the meeting point after Jim Thompson. The current short-list option is Bangkok Funride Night Tour at 130 Samsen 2 Alley; confirm the exact start time when booking and arrive at least 15 minutes early.',ja:'Jim Thompson見学後、そのまま集合場所へ。現在の短時間候補はBangkok Funride Night Tour（130 Samsen 2 Alley）。開始時刻は予約時に確認し、15分以上前の到着を目安にする。',th:'หลัง Jim Thompson ให้ตรงไปจุดนัดพบ ตัวเลือกระยะสั้นปัจจุบันคือ Bangkok Funride Night Tour ที่ 130 Samsen 2 Alley เวลาเริ่มจริงให้ยืนยันตอนจองและควรมาถึงก่อนอย่างน้อย 15 นาที'};
-    transfer.map='https://www.google.com/maps/dir/?api=1&origin=Jim+Thompson+House+Museum+Bangkok&destination=130+Samsen+2+Alley+Bangkok';
-    transfer.web='https://bangkokfunride.com/escooter/night-tour/';
-    transfer.est='฿120–250 / ¥580–1,200';
+    transfer.time='16:45–17:50';
+    transfer.title=T(
+      'Jim Thompson → Asiatique The Riverfront',
+      'Jim Thompson → Asiatique The Riverfront',
+      'Jim Thompson → Asiatique The Riverfront',
+      'Jim Thompson → Asiatique The Riverfront'
+    );
+    transfer.desc=T(
+      '推荐公共交通：从 Jim Thompson 步行到 BTS National Stadium，经 Siam 换乘 Silom Line 到 Saphan Taksin，2号口前往 Sathorn Pier，再搭 Asiatique 免费接驳船。若等车/等船时间过长，直接 Grab/Bolt 去 Asiatique，优先保证 SkyFlyers 落日时间。',
+      'Recommended route: walk to BTS National Stadium, change at Siam to the Silom Line for Saphan Taksin, use Exit 2 for Sathorn Pier, then take the free Asiatique shuttle boat. If rail/boat waiting becomes too long, use Grab/Bolt directly and protect the SkyFlyers sunset timing.',
+      'おすすめは公共交通。Jim ThompsonからBTS National Stadiumへ歩き、SiamでSilom Lineに乗換えてSaphan Taksinへ。2番出口からSathorn Pierへ行き、Asiatiqueの無料シャトル船を利用。待ち時間が長ければGrab/Boltへ切り替え、SkyFlyersの夕暮れ時間を優先。',
+      'แนะนำขนส่งสาธารณะ: เดินจาก Jim Thompson ไป BTS National Stadium เปลี่ยนสายที่ Siam ไป Silom Line ลง Saphan Taksin ออกทางออก 2 ไป Sathorn Pier แล้วขึ้นเรือรับส่งฟรีของ Asiatique หากรอรถหรือเรือนาน ให้ใช้ Grab/Bolt ตรงไปเพื่อรักษาเวลาพระอาทิตย์ตกของ SkyFlyers'
+    );
+    transfer.map='https://www.google.com/maps/dir/?api=1&origin=Jim+Thompson+House+Museum+Bangkok&destination=Asiatique+The+Riverfront+Bangkok&travelmode=transit';
+    transfer.web='https://www.thailandtravel.or.jp/asiatique-the-riverfront/';
+    transfer.est='฿100–250 / ¥480–1,200';
   }
 
-  if(!p('28k')) plans28.push({id:'28k',day:28,time:'17:15/17:30–20:00（以预订为准）',title:{zh:'Bangkok Funride Night Tour｜落日飞车',en:'Bangkok Funride Night Tour | sunset ride',ja:'Bangkok Funride Night Tour｜サンセットライド',th:'Bangkok Funride Night Tour | Sunset Ride'},desc:{zh:'目前最贴合我们时间的是2.5小时电动滑板车夜游：沿湄南河看黄昏与夜景，经过曼谷老城、金色寺庙一带，最后到考山路附近。官网当前成人 ฿1,199/人，含电动滑板车、头盔、当地向导和饮料；两人按 ฿2,398 计。最终是否选这家、具体出发时刻，预订前再确认。',en:'The current best fit is a 2.5-hour e-scooter night tour along the Chao Phraya at sunset and through Bangkok Old Town, finishing around the Khao San area. The official adult price is currently ฿1,199/person and includes the e-scooter, helmet, local guide and a drink. Budget for two: ฿2,398. Confirm the operator and exact departure time before booking.',ja:'現在の時間に最も合うのは2.5時間の電動スクーターナイトツアー。夕暮れのチャオプラヤ川沿い、バンコク旧市街や寺院周辺を走り、カオサン周辺へ。公式成人料金は現在฿1,199/人で、スクーター・ヘルメット・現地ガイド・飲み物込み。2人で฿2,398。最終予約前に催行会社と出発時刻を再確認。',th:'ตัวเลือกที่เข้ากับเวลามากที่สุดตอนนี้คือทัวร์ E-scooter กลางคืน 2.5 ชม. ชมพระอาทิตย์ตกริมเจ้าพระยา ผ่านย่านเมืองเก่าและวัด ก่อนจบใกล้ถนนข้าวสาร ราคาผู้ใหญ่ตามเว็บปัจจุบัน ฿1,199/คน รวม E-scooter หมวก ไกด์ท้องถิ่น และเครื่องดื่ม งบ 2 คน ฿2,398 ให้ยืนยันผู้จัดและเวลาออกจริงก่อนจอง'},map:'https://www.google.com/maps/search/?api=1&query=Bangkok+Funride+130+Samsen+2+Alley+Bangkok',web:'https://bangkokfunride.com/escooter/night-tour/',est:'฿2,398 / ¥11,510'});
+  ['28k','28l','28m','28n'].forEach(id=>{
+    const i=plans28.findIndex(x=>x.id===id);
+    if(i>=0)plans28.splice(i,1);
+  });
 
-  if(!p('28l')) plans28.push({id:'28l',day:28,time:'20:00–20:30',title:{zh:'落日飞车 → 晚餐地点',en:'Sunset ride → dinner',ja:'サンセットライド → 夕食',th:'Sunset Ride → มื้อเย็น'},desc:{zh:'结束后按当天胃口三选一：JODD FAIRS夜市、海鲜自助、正式餐厅。若选Crave，建议结束后直接Grab/Bolt过去，尽量20:15–20:30到店，并提前确认最后入场时间。',en:'After the ride, choose based on appetite: JODD FAIRS, seafood buffet, or a sit-down restaurant. If choosing Crave, go straight there by Grab/Bolt and aim to arrive around 20:15–20:30; confirm last admission in advance.',ja:'終了後は気分でJODD FAIRS、シーフードブッフェ、レストランの3択。Craveを選ぶ場合はGrab/Boltで直行し、20:15–20:30頃の到着を目標に最終入店時刻を事前確認。',th:'หลังจบทัวร์เลือกตามความอยาก: JODD FAIRS, บุฟเฟต์ซีฟู้ด หรือร้านอาหาร หากเลือก Crave ให้ตรงไปด้วย Grab/Bolt ตั้งเป้าถึงราว 20:15–20:30 และเช็กเวลารับลูกค้ารอบสุดท้ายล่วงหน้า'},map:'https://www.google.com/maps/search/?api=1&query=JODD+FAIRS+Ratchada+Bangkok',web:'https://www.thailandtravel.or.jp/jodd-fairs/',est:'฿100–300 / ¥480–1,440'}); else {const x=p('28l');x.title.zh='落日飞车 → 晚餐地点';x.desc.zh='结束后按当天胃口三选一：JODD FAIRS夜市、海鲜自助、正式餐厅。若选Crave，建议结束后直接Grab/Bolt过去，尽量20:15–20:30到店，并提前确认最后入场时间。';x.est='฿100–300 / ¥480–1,440';}
-  if(!p('28m')) plans28.push({id:'28m',day:28,time:'20:30–22:30',title:{zh:'晚餐三选一｜夜市 / 海鲜自助 / 正式餐厅',en:'Dinner choice | night market / seafood buffet / restaurant',ja:'夕食3択｜夜市 / シーフードブッフェ / レストラン',th:'มื้อเย็น 3 ตัวเลือก | ตลาด / บุฟเฟต์ซีฟู้ด / ร้านอาหาร'},desc:{zh:'主方案仍是JODD FAIRS Ratchada，边逛边吃；如果当天特别想吃海鲜，可以改Crave @ Aloft Sukhumvit 11海鲜自助，或较远但更平价的อิ่มอร่อย พัฒนาการ25；若下雨、太累或想坐下来慢慢吃，再从下方正式餐厅中选一家。所有方案只选一个，预计金额不会重复相加。',en:'Default: JODD FAIRS Ratchada. If you feel like a seafood feast, switch to Crave at Aloft Sukhumvit 11 or the cheaper but farther Im Aroi at Phatthanakan 25. For rain or a more relaxed dinner, choose one of the sit-down restaurants below. Only one dinner option is counted.',ja:'基本はJODD FAIRS Ratchada。シーフードをたっぷり食べたい日はAloft Sukhumvit 11のCrave、または少し遠いが安いอิ่มอร่อย พัฒนาการ25へ変更。雨・疲れ・ゆっくり座りたい場合は下のレストランから1店。予算は1案のみ計上。',th:'แผนหลักคือ JODD FAIRS Ratchada หากอยากกินซีฟู้ดเต็มที่ เลือก Crave ที่ Aloft Sukhumvit 11 หรืออิ่มอร่อย พัฒนาการ25ที่ไกลกว่าแต่ประหยัดกว่า หากฝนตกหรืออยากนั่งสบาย เลือกร้านอาหารด้านล่าง งบคิดเพียงหนึ่งตัวเลือก'},map:'https://www.google.com/maps/search/?api=1&query=JODD+FAIRS+Ratchada+Bangkok',web:'https://www.thailandtravel.or.jp/jodd-fairs/',est:'฿600–3,100 / ¥2,880–14,880'}); else {const x=p('28m');x.title={zh:'晚餐三选一｜夜市 / 海鲜自助 / 正式餐厅',en:'Dinner choice | night market / seafood buffet / restaurant',ja:'夕食3択｜夜市 / シーフードブッフェ / レストラン',th:'มื้อเย็น 3 ตัวเลือก | ตลาด / บุฟเฟต์ซีฟู้ด / ร้านอาหาร'};x.desc.zh='主方案仍是JODD FAIRS Ratchada，边逛边吃；如果当天特别想吃海鲜，可以改Crave @ Aloft Sukhumvit 11海鲜自助，或较远但更平价的อิ่มอร่อย พัฒนาการ25；若下雨、太累或想坐下来慢慢吃，再从下方正式餐厅中选一家。所有方案只选一个，预计金额不会重复相加。';x.est='฿600–3,100 / ¥2,880–14,880';}
-  if(!p('28n')) plans28.push({id:'28n',day:28,time:'22:30左右',title:{zh:'晚餐地点 → FuramaXclusive Asoke',en:'Dinner → FuramaXclusive Asoke',ja:'夕食 → FuramaXclusive Asoke',th:'มื้อเย็น → FuramaXclusive Asoke'},desc:{zh:'吃完就回酒店休息。若选Crave，它本身就在Sukhumvit 11，回Furama很方便；夜市或其他餐厅则按当天位置Grab/Bolt返回。',en:'Return to Furama after dinner. Crave is on Sukhumvit 11 and is especially convenient for the hotel; otherwise take Grab/Bolt back from wherever you dine.',ja:'夕食後はFuramaへ。CraveはSukhumvit 11なのでホテルへ戻りやすく、他の選択肢はその場所からGrab/Boltで戻る。',th:'กินเสร็จกลับ Furama หากเลือก Crave จะอยู่ Sukhumvit 11 ใกล้โรงแรมมาก ส่วนตัวเลือกอื่นกลับด้วย Grab/Bolt ตามจุดที่กิน'},map:'https://www.google.com/maps/search/?api=1&query=FuramaXclusive+Asoke+Bangkok',web:'https://www.furama.com/furamaxclusive/asoke/',est:'฿80–250 / ¥380–1,200'}); else {const x=p('28n');x.time='22:30左右';x.title.zh='晚餐地点 → FuramaXclusive Asoke';x.desc.zh='吃完就回酒店休息。若选Crave，它本身就在Sukhumvit 11，回Furama很方便；夜市或其他餐厅则按当天位置Grab/Bolt返回。';x.est='฿80–250 / ¥380–1,200';}
-
-  const options=[
-    {group:'主方案',name:'JODD FAIRS Ratchada',note:'落日飞车后去｜夜市晚餐 + 小吃 + 水果甜品',price:'两人约 ฿600–1,400',google:'https://www.google.com/maps/search/?api=1&query=JODD+FAIRS+Ratchada+Bangkok',site:'https://www.thailandtravel.or.jp/jodd-fairs/'},
-    {group:'海鲜自助',name:'Crave · Aloft Bangkok Sukhumvit 11',note:'28号周五可用｜18:00–22:00｜河虾、生蚝、蓝蟹、rock lobster、鱿鱼、青口＋寿司刺身等；离Furama近。官方当前 ฿1,299++/人，含无限软饮。落日飞车后时间偏紧，务必提前订位并确认最后入场。',price:'两人约 ฿3,060（按฿1,299++/人估）',google:'https://www.google.com/maps/search/?api=1&query=Crave+Aloft+Bangkok+Sukhumvit+11',site:'https://www.marriott.com/offers/weekend-seafood-dinner-buffet-OFF-217689/bkkal-aloft-bangkok-sukhumvit-11'},
-    {group:'海鲜自助',name:'อิ่มอร่อย บุฟเฟ่ต์ทะเลเผา · พัฒนาการ25',note:'泰式烧烤型｜活虾、蟹、贝类、鱼和熟食；更接近Big Whale风格。价格公开记录约฿499/人＋饮料，位置较远，适合当天特别想吃平价海鲜自助时选择，到店前再确认最新价格与营业时间。',price:'两人先按 ฿1,100–1,300',google:'https://www.google.com/maps/search/?api=1&query=%E0%B8%AD%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%AD%E0%B8%A3%E0%B9%88%E0%B8%AD%E0%B8%A2+%E0%B8%9A%E0%B8%B8%E0%B8%9F%E0%B9%80%E0%B8%9F%E0%B9%88%E0%B8%95%E0%B9%8C%E0%B8%97%E0%B8%B0%E0%B9%80%E0%B8%A5%E0%B9%80%E0%B8%9C%E0%B8%B2+%E0%B8%9E%E0%B8%B1%E0%B8%92%E0%B8%99%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A325+Bangkok',site:'https://www.wongnai.com/restaurants/2585688GZ-%E0%B8%AD%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%AD%E0%B8%A3%E0%B9%88%E0%B8%AD%E0%B8%A2-%E0%B8%9A%E0%B8%B8%E0%B8%9F%E0%B9%80%E0%B8%9F%E0%B9%88%E0%B8%97%E0%B8%B0%E0%B9%80%E0%B8%A5%E0%B9%80%E0%B8%9C%E0%B8%B2-%E0%B8%9E%E0%B8%B1%E0%B8%92%E0%B8%99%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A325'},
-    {group:'正式餐厅',name:'Somboon Seafood · CentralWorld',note:'咖喱炒蟹 / 海鲜｜想正式坐下来吃时',price:'两人约 ฿1,200–2,200',google:'https://www.google.com/maps/search/?api=1&query=Somboon+Seafood+CentralWorld+Bangkok',site:'https://www.somboonseafood.com/en/location'},
-    {group:'正式餐厅',name:'Som Tam Nua · Siam Center',note:'东北泰菜｜青木瓜沙拉、炸鸡、烤肉',price:'两人约 ฿600–1,000',google:'https://www.google.com/maps/search/?api=1&query=Som+Tam+Nua+Siam+Center+Bangkok',site:'https://www.google.com/maps/search/?api=1&query=Som+Tam+Nua+Siam+Center+Bangkok'},
-    {group:'正式餐厅',name:'Inter Restaurant · Siam Square',note:'平价泰国菜｜更本地、更实惠',price:'两人约 ฿400–800',google:'https://www.google.com/maps/search/?api=1&query=Inter+Restaurant+Siam+Square+Bangkok',site:'https://www.google.com/maps/search/?api=1&query=Inter+Restaurant+Siam+Square+Bangkok'},
-    {group:'正式餐厅',name:'Kub Kao Kub Pla · CentralWorld',note:'泰式家常菜 + 海鲜｜选择多',price:'两人约 ฿800–2,400',google:'https://www.google.com/maps/search/?api=1&query=Kub+Kao+Kub+Pla+CentralWorld+Bangkok',site:'https://www.google.com/maps/search/?api=1&query=Kub+Kao+Kub+Pla+CentralWorld+Bangkok'},
-    {group:'正式餐厅',name:'Nara Thai Cuisine · CentralWorld',note:'环境舒服｜价格偏高，现场看评价再决定',price:'两人约 ฿1,000–2,400',google:'https://www.google.com/maps/search/?api=1&query=Nara+Thai+Cuisine+CentralWorld+Bangkok',site:'https://www.google.com/maps/search/?api=1&query=Nara+Thai+Cuisine+CentralWorld+Bangkok'}
-  ];
-
-  function addStyle(){if(document.getElementById('d28EveningStyle'))return;const s=document.createElement('style');s.id='d28EveningStyle';s.textContent='.d28-evening-options{margin-top:10px;display:grid;gap:7px}.d28-evening-row{border:1px solid #dfe8e5;border-radius:10px;padding:8px 9px;background:#fafcfb}.d28-evening-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}.d28-evening-name{font-size:11px;font-weight:850;color:#203a36}.d28-evening-tag{font-size:9px;font-weight:850;padding:2px 6px;border-radius:999px;background:#edf4f1;color:#315b54}.d28-evening-note,.d28-evening-price{font-size:10px;color:#697873;margin-top:3px}.d28-evening-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.d28-evening-actions a{display:inline-block;text-decoration:none;border:1px solid #cbdcd7;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:800;color:#0f625a;background:#fff}';document.head.appendChild(s)}
-  function patch(){const event=document.querySelector('#trip_28m .event');if(!event)return;addStyle();const old=document.getElementById('d28EveningOptions');if(old)old.remove();const wrap=document.createElement('div');wrap.id='d28EveningOptions';wrap.className='d28-evening-options';options.forEach(o=>{const r=document.createElement('div');r.className='d28-evening-row';r.innerHTML=`<div class="d28-evening-head"><span class="d28-evening-name">${o.name}</span><span class="d28-evening-tag">${o.group}</span></div><div class="d28-evening-note">${o.note}</div><div class="d28-evening-price">${o.price}</div><div class="d28-evening-actions"><a href="${o.google}" target="_blank" rel="noopener">Google Maps · 评价/照片</a><a href="${o.site}" target="_blank" rel="noopener">官网 / 菜单</a></div>`;wrap.appendChild(r)});const desc=event.querySelector('.desc');if(desc)desc.after(wrap);else event.prepend(wrap)}
-  window.addEventListener('load',()=>setTimeout(patch,300));
-  document.addEventListener('trip:rendered',patch);
-  document.addEventListener('click',e=>{if(e.target.closest('.langbtn,.currencybtn'))setTimeout(patch,180)});
+  plans28.push(
+    {id:'28k',day:28,time:'17:50–18:45',
+      title:T('Asiatique｜SkyFlyers 落日飞车','Asiatique | SkyFlyers sunset ride','Asiatique｜SkyFlyers サンセット','Asiatique | SkyFlyers ช่วงพระอาทิตย์ตก'),
+      desc:T(
+        '到 Asiatique 后直接去 SkyFlyers，目标18:10–18:40之间完成排队、乘坐和拍照，尽量覆盖18:30前后的落日。当前参考票价约 ฿320/人；天气、排队和实际运营时间以当天为准。',
+        'Go straight to SkyFlyers after arriving at Asiatique. Aim to queue, ride and take photos between about 18:10 and 18:40 to catch the sunset around 18:30. Current reference price is about THB 320/person; weather, queues and operating conditions may change on the day.',
+        'Asiatique到着後はSkyFlyersへ直行。18:10〜18:40頃に待ち時間・乗車・写真をまとめ、18:30前後の夕日を狙う。現在の参考料金は1人約฿320。天候・待ち時間・当日の運行状況を優先。',
+        'ถึง Asiatique แล้วตรงไป SkyFlyers เป้าหมายคือเข้าแถว เล่น และถ่ายรูปช่วงประมาณ 18:10–18:40 เพื่อชมพระอาทิตย์ตกราว 18:30 ราคาปัจจุบันอ้างอิงประมาณ ฿320/คน โดยให้ยึดสภาพอากาศ คิว และการให้บริการจริงในวันนั้น'
+      ),
+      map:'https://www.google.com/maps/search/?api=1&query=SkyFlyers+Wings+of+Garudapterus+Asiatique+Bangkok',
+      web:'https://www.thailandtravel.or.jp/skyflyers/',est:'฿640 / ¥3,070'},
+    {id:'28l',day:28,time:'18:45–21:15',
+      title:T('Asiatique｜河边晚餐 + 夜景 + 随意逛','Asiatique | riverside dinner + night views','Asiatique｜川沿いディナー + 夜景','Asiatique | อาหารเย็นริมแม่น้ำ + วิวกลางคืน'),
+      desc:T(
+        '坐完 SkyFlyers 后不再赶下一站，就留在 Asiatique。找一家河边或园区内的泰餐/海鲜餐厅吃晚饭，之后沿湄南河散步、拍夜景，看到喜欢的小店再逛。节奏放松，不安排必须打卡的第二个夜市。',
+        'After SkyFlyers, stay at Asiatique rather than rushing elsewhere. Have Thai food or seafood at a riverside or on-site restaurant, then walk along the Chao Phraya, take night photos and browse only shops that look interesting. No second night market is required.',
+        'SkyFlyers後は次の場所へ急がずAsiatiqueに滞在。川沿いまたは園内でタイ料理・シーフードの夕食を取り、チャオプラヤ川沿いを散歩して夜景を撮影。気になる店だけ見て、別の夜市は入れない。',
+        'หลัง SkyFlyers อยู่ต่อที่ Asiatique ไม่ต้องรีบไปที่อื่น กินอาหารไทยหรือซีฟู้ดที่ร้านริมแม่น้ำหรือในโครงการ แล้วเดินริมเจ้าพระยา ถ่ายรูปกลางคืน และแวะร้านที่สนใจ ไม่ต้องใส่ตลาดกลางคืนแห่งที่สอง'
+      ),
+      map:'https://www.google.com/maps/search/?api=1&query=Asiatique+The+Riverfront+Bangkok',
+      web:'https://www.thailandtravel.or.jp/asiatique-the-riverfront/',est:'฿800–1,800 / ¥3,840–8,640'},
+    {id:'28m',day:28,time:'21:15–22:00',
+      title:T('Asiatique → FuramaXclusive Asoke','Asiatique → FuramaXclusive Asoke','Asiatique → FuramaXclusive Asoke','Asiatique → FuramaXclusive Asoke'),
+      desc:T(
+        '晚上直接回酒店休息。体力好且接驳船/BTS顺的话可原路公共交通返回；更省事就直接 Grab/Bolt 回 FuramaXclusive Asoke。',
+        'Return to the hotel for the night. If you still have energy and the boat/BTS connection is smooth, use public transit; otherwise take Grab/Bolt directly to FuramaXclusive Asoke.',
+        '夜はそのままホテルへ。体力があり船/BTSの接続が良ければ公共交通、楽に戻りたい場合はGrab/BoltでFuramaXclusive Asokeへ直行。',
+        'กลับโรงแรมช่วงค่ำ หากยังมีแรงและเรือ/BTS ต่อสะดวกก็ใช้ขนส่งสาธารณะ หรือเรียก Grab/Bolt ตรงกลับ FuramaXclusive Asoke เพื่อความสะดวก'
+      ),
+      map:'https://www.google.com/maps/dir/?api=1&origin=Asiatique+The+Riverfront+Bangkok&destination=FuramaXclusive+Asoke+Bangkok&travelmode=driving',
+      web:'https://www.furama.com/furamaxclusive/asoke/',est:'฿150–300 / ¥720–1,440'}
+  );
 })();
